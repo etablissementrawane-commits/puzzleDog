@@ -1,0 +1,11 @@
+source 'https://cdn.cocoapods.org/'
+
+platform :ios, '13.0'
+
+target 'UnityFramework' do
+  pod 'AppLovinSDK', '13.6.2'
+  pod 'PurchasesHybridCommon', '18.30.0'
+end
+target 'Unity-iPhone' do
+end
+use_frameworks! :linkage => :static
