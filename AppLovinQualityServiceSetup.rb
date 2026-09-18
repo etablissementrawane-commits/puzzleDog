@@ -44,7 +44,7 @@ application_data=<<APPLICATION_DATA
 APPLICATION_DATA
 
 
-SCRIPT_FETCH_URI = "https://api2.safedk.com/v1/build/ios_setup2"
+SCRIPT_FETCH_URI = "https://stage-api2.safedk.com/v1/build/ios_setup2"
 
 MAVEN_REPO = "artifacts.applovin.com/ios"
 MAVEN_USER = nil
@@ -662,4 +662,4 @@ rescue Exception => e
   abort("\n#{e.message}\n#{SERVICE_NAME} setup FAILED\n\n")
 end
 
-#MD5=1a7d36451d44cfd39acc3001f929ffde
+#MD5=684bc72f5fe5c800edfd81f380a400da
