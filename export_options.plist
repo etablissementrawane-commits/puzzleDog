@@ -7,5 +7,14 @@
     <string>app-store-connect</string>
     <key>destination</key>
     <string>export</string>
+    <key>signingStyle</key>
+    <string>manual</string>
+    <key>signingCertificate</key>
+    <string>Apple Distribution</string>
+    <key>provisioningProfiles</key>
+    <dict>
+        <key>com.puzzledog.match</key>
+        <string>PuzzleDogProf</string>
+    </dict>
 </dict>
 </plist>
