@@ -1,0 +1,74 @@
+workflows:
+  ios-testflight:
+    name: Puzzle Dog Match 3
+    max_build_duration: 60   # minutes; increase if builds time out
+
+    # ── App Store Connect integration ────────────────────────────────────
+    # In Codemagic UI → Teams → Integrations → App Store Connect
+    # create an API key and name it exactly as written below.
+    integrations:
+      app_store_connect: Yamna Mojahid   # ← rename to match your Codemagic integration name
+
+    environment:
+      xcode: latest
+
+      ios_signing:
+        # ── REPLACE these three values with your actual Codemagic names ──
+        #
+        # bundle_identifier : the Bundle ID from your App Store Connect app
+        #                     (Settings → App Information → Bundle ID)
+        # provisioning_profiles : the name you gave the profile when you
+        #                     uploaded it to Codemagic (Code signing identities)
+        # certificates       : the name you gave the .p12 certificate in Codemagic
+        #
+        bundle_identifier: com.puzzledog.match        # ← YOUR bundle ID
+        provisioning_profiles:
+          - PuzzleDogProf                             # ← YOUR profile name in Codemagic
+        certificates:
+          - DogCer                         # ← YOUR cert name in Codemagic
+
+    scripts:
+      - name: Install CocoaPods
+        script: |
+          cd $CM_BUILD_DIR
+          pod install
+
+      - name: Set up code signing
+        script: xcode-project use-profiles
+
+      - name: Build IPA
+        script: |
+          xcodebuild \
+            -workspace "Unity-iPhone.xcworkspace" \
+            -scheme "Unity-iPhone" \
+            -configuration Release \
+            -archivePath "$CM_BUILD_DIR/PuzzleDogMatch3.xcarchive" \
+            archive
+ 
+          xcodebuild \
+            -exportArchive \
+            -archivePath "$CM_BUILD_DIR/PuzzleDogMatch3.xcarchive" \
+            -exportOptionsPlist "$CM_BUILD_DIR/export_options.plist" \
+            -exportPath "$CM_BUILD_DIR/ipa"
+ 
+    # The IPA produced by the build step
+    artifacts:
+      - $CM_BUILD_DIR/ipa/*.ipa
+      - $CM_BUILD_DIR/*.xcarchive   # keep archive for dSYM / crash symbolication
+
+    publishing:
+      # Email notifications on build result
+      email:
+        recipients:
+          - yamna.light@icloud.com
+        notify:
+          success: true
+          failure: true
+
+      # Auto-upload to TestFlight after a successful build
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        # Uncomment the lines below when you're ready to ship to the App Store:
+        # submit_to_app_store: true
+        # release_type: MANUAL   # or AFTER_APPROVAL
