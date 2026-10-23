@@ -1,6 +1,6 @@
 workflows:
   ios-testflight:
-    name: Pet Merge: Match 3
+    name: Pet Merge Match 3
     max_build_duration: 60   # minutes; increase if builds time out
 
     # ── App Store Connect integration ────────────────────────────────────
