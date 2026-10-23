@@ -42,12 +42,12 @@ workflows:
             -workspace "Unity-iPhone.xcworkspace" \
             -scheme "Unity-iPhone" \
             -configuration Release \
-            -archivePath "$CM_BUILD_DIR/PuzzleDogMatch3.xcarchive" \
+            -archivePath "$CM_BUILD_DIR/PetMergeMatch3.xcarchive" \
             archive
  
           xcodebuild \
             -exportArchive \
-            -archivePath "$CM_BUILD_DIR/PuzzleDogMatch3.xcarchive" \
+            -archivePath "$CM_BUILD_DIR/PetMergeMatch3.xcarchive" \
             -exportOptionsPlist "$CM_BUILD_DIR/export_options.plist" \
             -exportPath "$CM_BUILD_DIR/ipa"
  
