@@ -7,7 +7,7 @@ workflows:
     # In Codemagic UI → Teams → Integrations → App Store Connect
     # create an API key and name it exactly as written below.
     integrations:
-      app_store_connect: Yamna Amraoui   # ← rename to match your Codemagic integration name
+      app_store_connect: Yamna Moujahid   # ← rename to match your Codemagic integration name
 
     environment:
       xcode: latest
@@ -21,7 +21,7 @@ workflows:
         #                     uploaded it to Codemagic (Code signing identities)
         # certificates       : the name you gave the .p12 certificate in Codemagic
         #
-        bundle_identifier: com.puzzlethree.match        # ← YOUR bundle ID
+        bundle_identifier: com.puzzledog.match        # ← YOUR bundle ID
         provisioning_profiles:
           - PuzzleDogProf                             # ← YOUR profile name in Codemagic
         certificates:
