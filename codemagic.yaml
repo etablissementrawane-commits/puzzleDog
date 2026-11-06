@@ -7,7 +7,7 @@ workflows:
     # In Codemagic UI → Teams → Integrations → App Store Connect
     # create an API key and name it exactly as written below.
     integrations:
-      app_store_connect: Yamna Moujahid   # ← rename to match your Codemagic integration name
+      app_store_connect: Yamna Mojahid   # ← rename to match your Codemagic integration name
 
     environment:
       xcode: latest
